@@ -345,10 +345,10 @@ export default function JudgeDashboard() {
                 <MessageSquare className="w-5 h-5 text-[#ffbe00]" />
               </div>
               <div>
-                <h2 className="text-base sm:text-lg font-bold font-pixel text-white tracking-wide">
+                <h2 className="text-base sm:text-lg font-bold text-white tracking-normal">
                   ROUND 2 RUBRIC
                 </h2>
-                <p className="text-xs font-retro text-[#ffbe00]">
+                <p className="text-xs text-amber-400 font-medium">
                   Present & Defend — 100 Points Total
                 </p>
               </div>
@@ -356,7 +356,7 @@ export default function JudgeDashboard() {
 
             <button
               onClick={() => setShowRubricGuide(!showRubricGuide)}
-              className="text-xs font-retro text-slate-400 hover:text-white px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 transition-colors flex items-center gap-1.5 cursor-pointer"
+              className="text-xs text-slate-400 hover:text-white px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 transition-colors flex items-center gap-1.5 cursor-pointer font-medium"
             >
               <span>{showRubricGuide ? 'Hide Details' : 'Show Details'}</span>
               {showRubricGuide ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
@@ -369,38 +369,60 @@ export default function JudgeDashboard() {
               {/* Criterion 1: Presentation Quality */}
               <div className="bg-[#1e2330]/90 border border-slate-700/80 p-4 rounded-2xl space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs sm:text-sm font-bold font-pixel text-white tracking-tight">
-                    PRESENTATION QUALITY
+                  <span className="text-xs sm:text-sm font-bold text-white tracking-normal">
+                    1. PRESENTATION QUALITY & DELIVERY
                   </span>
-                  <span className="text-xs sm:text-sm font-bold font-pixel text-[#10b981]">
-                    30%
+                  <span className="text-xs sm:text-sm font-bold text-emerald-400">
+                    25%
                   </span>
                 </div>
-                <p className="text-xs font-retro text-slate-400 leading-relaxed">
-                  Structure, clarity, confidence, time management and visual communication
+                <p className="text-xs text-slate-400 leading-relaxed font-normal">
+                  Structure, slide clarity, confidence, pitch storytelling, time management and visual communication
                 </p>
               </div>
 
-              {/* Criterion 2: Project Explanation & Technical Q&A */}
+              {/* Criterion 2: Code Walkthrough & Architecture */}
               <div className="bg-[#1e2330]/90 border border-slate-700/80 p-4 rounded-2xl space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs sm:text-sm font-bold font-pixel text-white tracking-tight">
-                    PROJECT EXPLANATION & TECHNICAL Q&A
+                  <span className="text-xs sm:text-sm font-bold text-white tracking-normal">
+                    2. CODE WALKTHROUGH & ARCHITECTURE
                   </span>
-                  <span className="text-xs sm:text-sm font-bold font-pixel text-[#eab308]">
-                    70%
+                  <span className="text-xs sm:text-sm font-bold text-blue-400">
+                    30%
                   </span>
                 </div>
-                <p className="text-xs font-retro text-slate-400 leading-relaxed">
+                <p className="text-xs text-slate-400 leading-relaxed font-normal">
+                  Explanation of Scratch scripts, variables, broadcast events, loops, collision logic and modular blocks
+                </p>
+              </div>
+
+              {/* Criterion 3: Technical Defense & Q&A */}
+              <div className="bg-[#1e2330]/90 border border-slate-700/80 p-4 rounded-2xl space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs sm:text-sm font-bold text-white tracking-normal">
+                    3. TECHNICAL DEFENSE & Q&A DEPTH
+                  </span>
+                  <span className="text-xs sm:text-sm font-bold text-amber-400">
+                    30%
+                  </span>
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed font-normal">
                   Depth of understanding, explaining logic & design decisions, answering judge questions, and defending implementation choices
                 </p>
               </div>
 
-              {/* Info Notice Box matching the attached image */}
-              <div className="bg-[#1a1c2e] border border-indigo-500/30 p-4 rounded-2xl flex items-start gap-3 text-slate-300">
-                <Info className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
-                <p className="text-xs font-retro leading-relaxed text-slate-300">
-                  During Round 2, judges may ask any team member to explain specific scripts, variables or mechanics. If a team cannot explain a substantial portion of its own project, scores may be reduced.
+              {/* Criterion 4: Team Collaboration & Synergy */}
+              <div className="bg-[#1e2330]/90 border border-slate-700/80 p-4 rounded-2xl space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs sm:text-sm font-bold text-white tracking-normal">
+                    4. TEAMWORK & ROLE SYNERGY
+                  </span>
+                  <span className="text-xs sm:text-sm font-bold text-purple-400">
+                    15%
+                  </span>
+                </div>
+                <p className="text-xs text-slate-400 leading-relaxed font-normal">
+                  Equal contribution, balanced speaking time across members, respectful handoffs, and squad coordination
                 </p>
               </div>
 
