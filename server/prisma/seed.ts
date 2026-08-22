@@ -174,6 +174,24 @@ const CHALLENGES_DATA = [
     shortDescription: 'Colliding with enemies swaps positions instantly instead of taking damage.',
     fullDescription: 'Maybe bumping into an enemy swaps positions with them instantly instead of taking direct damage.',
     requirements: []
+  },
+  {
+    title: 'Follow the Leader',
+    category: 'Creative Theme',
+    difficulty: 'Open Creative',
+    maxCapacity: 4,
+    shortDescription: 'Your character automatically tracks your cursor through precision obstacle mazes.',
+    fullDescription: 'Maybe your character automatically follows your mouse cursor, and you have to guide them through moving hazards without letting them touch the borders.',
+    requirements: []
+  },
+  {
+    title: 'Keep It Up',
+    category: 'Creative Theme',
+    difficulty: 'Open Creative',
+    maxCapacity: 4,
+    shortDescription: 'Juggle a bouncing object above the floor while actively dodging falling hazards.',
+    fullDescription: 'Maybe you have to keep a bouncing object from hitting the bottom of the screen while dodging falling items at the same time.',
+    requirements: []
   }
 ];
 
@@ -274,7 +292,7 @@ BLUE00,HEEUE00#11,Blue10.1,Heet Mehta,heetmehta16@gmail.com,9322559300,Parv Shah
 FIRE20,E26RE20#11,Fire extinguishers,Piyush kori,e26b07f0801@adypu.edu.in,7067164320,Soham shankar deshmane,sohamd1033@gmail.com,Harshit Singh,e26b07f0548@adypu.edu.in
 LACA08,ABHCA08#16,La Casa de Papel,Abhikalp Sisodiya,abhikalp2006dhar@gmail.com,6232483608,Aarush Anand Karva,aarushkarva@gmail.com,Unmesh Bipin Bhagat,unmesh9073@gmail.com
 SCRA88,RISRA88#15,Scratchables,Rishabh Sundrani,rishabhsundrani@gmail.com,9131213588,Kusumesh Talokar,tkusumesh@gmail.com,Ananya Singh,ananysin0111@gmail.com
-TEAM57,AHMAM57#15,Team LUCID,Ahmad Mohsin,ahmadmohsin0765@gmail.com,7991479557,Tanishka,trishatanishka4@gmail.com,Annanya Gautam,annanyag07@gmail.com
+TEAM57,AHMAM57#15,Team LUCID,Ahmad Mohsin,ahmadmohsin0765@gmail.com,7991479557,Tanishka,trishatanishka4@gmail.com,Ankit Kudi,ankit.kudi@adypu.edu.in
 HIGH99,DHRGH99#15,Highkey,Dhruv Kashiv,dhruvkashiv2401@gmail.com,7987323699,Shubh Srivastava,shubhrelm@gmail.com,Parishi Maheshwari,parishimaheshwari2108@gmail.com
 PIXE10,NITXE10#14,Pixel pirates,Nitish singla,nitishsingllla@gmil.com,7340803110,Anuradha gaur,anuradhagaur1408@gmail.com,Janika,jainika32561@gmail.com
 CODE35,SNEDE35#11,Code Catalyst,Sneha Singh,sneha2208sh@gmail.com,8735850635,Paulami Bhosale,paulamibhosle@gmail.com,Rhea Sharma,srheark99@gmail.com
@@ -313,7 +331,7 @@ RUNT35,RIYNT35#11,Runtime Rebels,Riya Agrawal,riya1503235@gmail.com,8440076235,J
 BINA36,MOKNA36#15,Binary Brains,Mokshini Singh,mokshinisingh8b@gmail.com,8949660136,Sarvesh Chawan,sarvesh.chawan1000@gmail.com,Tushar,tushar153588@gmail.com
 CLIC52,PATIC52#14,Click & conquer,SHYAM PATEL,patelshyam2008@gmail.com,9213449152,Deep sabhadiya,deepsabhadiya01@gmail.com,Harvender Singh rawat,harvendersinghrawat7336@gmail.com
 CHAO52,73AAO52#15,Chaotic Dreamers,Aayuah Bhaskar,73aayushbhaskar@gmail.com,7004994052,Bhavya M Sheth,shethbhavyam211@gmail.com,Yojith Thati,yojith551@gmail.com
-TRIP04,MAHIP04#12,Triple Threat,Maharshi Patel,maharshi1704@gmail.com,9998751704,Shashank Suyash Yadav,e26b07f0738@adypu.edu.in,Muskan Sharma,e26b07f0711@adypu.edu.in
+TRIP04,MAHIP04#12,Triple Threat,Maharshi Patel,maharshi1704@gmail.com,9998751704,Shashank Suyash Yadav,e26b07f0738@adypu.edu.in,Prachi Negi,prachi.negi@adypu.edu.in
 QUAS87,SHAAS87#16,Quasar,Sharwari Ghodase,sharwari.ghodase@gmail.com,9156920587,Aniket,aniketmanna03@gmail.com,Nipun,brainpool25@gmail.com
 NOVA06,SAPVA06#14,Nova,Sapna,sapna.16072023@gmail.com,9699645206,Janhavi,janvipsha2008@gmail.com,Aanya Ahuja,aanyaahuja002@gmail.com
 CHAO64,SG7AO64#9,CHAOS SYNDICATE,Ayush Kumar Jha,sg7772904@gmail.com,9835018764,Ashish Parihar,ashishparihar138@gmail.com,Anika Sharma,anika19112007@gmail.com
@@ -337,7 +355,9 @@ KAVE76,KAVVE76#14,kaveri,kaveri singh,kaverisingh812@gmail.com,9873351576,Aditya
 ISHA77,JANHA77#12,Ishan janwa,Ishan janwa,janwaishan35@gmail.com,7568936177,Tanmay Gahlot,tanmaygahlott@gmail.com,Sameer Newar,sameernewar7841@gmail.com
 SARA54,E26RA54#11,Sara,Sara Kottawar,e26b07f0709@adypu.edu.in,7498310054,Harshit Jha,harshit.rn.jha1234@gmail.com,Ayesha Siddiqua,ayeshasiddiqua.2459@gmail.com
 VORT78,E26RT78#11,Vortex,Prashant Kumar,e26b07f0799@adypu.edu.in,8055183878,Nitesh Kumar,niteshkumar03961@gmail.com,Raja Shirjeel,rajasarjais@gmail.com
-HACK47,GVTCK47#8,Hacker Janata Party,Md Arman,gvtd6485@gmail.com,9508656947,Aaditya Deshmukh-Patil,aadityaudp19@gmail.com,,`;
+HACK47,GVTCK47#8,Hacker Janata Party,Md Arman,gvtd6485@gmail.com,9508656947,Aaditya Deshmukh-Patil,aadityaudp19@gmail.com,,
+DWAR56,ARFS45#11,Dwarfs,Alok Chauhan,alok.dwar56@adypu.edu.in,9999999999,,,,
+INFI56,NITY45#11,Infinity,Stavan,stavan@adypu.edu.in,9999999999,,,,`;
 
   const lines = realTeamsCsv.trim().split('\n').slice(1);
   const usedAccessCodes = new Set<string>();
