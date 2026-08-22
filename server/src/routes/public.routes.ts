@@ -74,6 +74,7 @@ router.get('/leaderboard', async (req, res: Response) => {
         },
         submissions: {
           where: { roundNumber: 1 },
+          orderBy: { submittedAt: 'desc' },
           select: { roundNumber: true, scratchUrl: true, shortDescription: true, videoUrl: true, status: true },
         },
       },
@@ -99,6 +100,17 @@ router.get('/leaderboard', async (req, res: Response) => {
           ? Number((avgR1 * 0.4 + avgR2 * 0.6).toFixed(2))
           : avgR1;
 
+      // Find the best valid submission (prefer one with non-empty URL/video)
+      const validSub =
+        t.submissions.find((s) => s.scratchUrl && s.scratchUrl.trim().length > 0) ||
+        t.submissions.find((s) => s.status === 'SUBMITTED' || s.status === 'LATE') ||
+        t.submissions[0] ||
+        null;
+
+      const validVideoSub =
+        t.submissions.find((s) => s.videoUrl && s.videoUrl.trim().length > 0) ||
+        validSub;
+
       return {
         teamId: t.id,
         teamName: t.name,
@@ -118,8 +130,8 @@ router.get('/leaderboard', async (req, res: Response) => {
         r2Score: avgR2,
         round2JudgesCount: t.round2Scores.length,
         finalScore,
-        scratchUrl: t.submissions[0]?.scratchUrl || '',
-        videoUrl: t.submissions[0]?.videoUrl || '',
+        scratchUrl: validSub?.scratchUrl || '',
+        videoUrl: validVideoSub?.videoUrl || '',
       };
     });
 

@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "exportedAt": "2026-08-22T21:00:54.166Z",
+    "exportedAt": "2026-08-22T20:51:19.477Z",
     "counts": {
       "users": 237,
       "teams": 79,
@@ -6576,6 +6576,35 @@
       }
     },
     {
+      "id": "01c3414a-9878-4ee6-ad39-5bd1de4c52c4",
+      "teamId": "b30a0154-0993-4e71-9db2-eceac90df1a7",
+      "roundNumber": 1,
+      "scratchUrl": "",
+      "shortDescription": "A virus has turned people into dangerous, mindless zombies, causing society to collapse. The player is a survivor trapped in an abandoned amusement park, where 22 zombies are closing in and 10 survivors are waiting to be rescued.\n\nThe goal is not just to survive. The player must fight the growing number of zombies, rescue all 10 survivors, and reach a train station. A train there can take them to another city where a cure has been discovered.\n\nBut the journey becomes harder as more zombies arrive and become more aggressive whenever the player takes them down.\n\nAfter reaching the train station, the player and the 10 survivors discover a terrible problem. The train has only 10 special disinfected berths, and each berth can safely carry only one person to the city with the cure.\n\nThere are 11 people, but only 10 berths.\n\nThe player now has an impossible choice: sacrifice one of the survivors, or sacrifice himself.\n\nIn the end, the player chooses to sacrifice himself, giving all 10 survivors a chance to reach the city and survive.",
+      "videoUrl": null,
+      "videoFileName": null,
+      "videoFileSize": null,
+      "status": "DRAFT",
+      "notes": "[WASD]",
+      "submittedAt": "2026-08-22T09:52:52.516Z",
+      "createdAt": "2026-08-22T09:52:52.517Z",
+      "updatedAt": "2026-08-22T09:52:52.517Z",
+      "team": {
+        "id": "b30a0154-0993-4e71-9db2-eceac90df1a7",
+        "name": "ZeroLatency",
+        "accessCode": "ZERO14",
+        "challengeId": "b68a74af-9774-490e-bbd3-60d5e502a84f",
+        "challengeClaimedAt": "2026-08-22T05:44:46.050Z",
+        "isFinalist": true,
+        "r2PresentationSlot": 7,
+        "round1Score": 73.5,
+        "round2Score": null,
+        "finalScore": null,
+        "createdAt": "2026-08-22T05:24:58.099Z",
+        "updatedAt": "2026-08-22T12:42:01.930Z"
+      }
+    },
+    {
       "id": "07dde92e-4991-42dc-89b8-a5c2b6cfb71b",
       "teamId": "b5f53e16-512b-483f-bca5-3978e9e2533e",
       "roundNumber": 1,
@@ -6895,6 +6924,35 @@
       }
     },
     {
+      "id": "702c3724-5926-41a0-9964-b1f5d99a8988",
+      "teamId": "b30a0154-0993-4e71-9db2-eceac90df1a7",
+      "roundNumber": 1,
+      "scratchUrl": "https://scratch.mit.edu/projects/1374319355/",
+      "shortDescription": "A virus has turned people into dangerous, mindless zombies, causing society to collapse. The player is a survivor trapped in an abandoned amusement park, where 22 zombies are closing in and 10 survivors are waiting to be rescued.\n\nThe goal is not just to survive. The player must fight the growing number of zombies, rescue all 10 survivors, and reach a train station. A train there can take them to another city where a cure has been discovered.\n\nBut the journey becomes harder as more zombies arrive and become more aggressive whenever the player takes them down.\n\nAfter reaching the train station, the player and the 10 survivors discover a terrible problem. The train has only 10 special disinfected berths, and each berth can safely carry only one person to the city with the cure.\n\nThere are 11 people, but only 10 berths.\n\nThe player now has an impossible choice: sacrifice one of the survivors, or sacrifice himself.\n\nIn the end, the player chooses to sacrifice himself, giving all 10 survivors a chance to reach the city and survive.",
+      "videoUrl": null,
+      "videoFileName": null,
+      "videoFileSize": null,
+      "status": "DRAFT",
+      "notes": "[WASD]",
+      "submittedAt": "2026-08-22T09:55:46.199Z",
+      "createdAt": "2026-08-22T09:55:46.199Z",
+      "updatedAt": "2026-08-22T09:55:46.199Z",
+      "team": {
+        "id": "b30a0154-0993-4e71-9db2-eceac90df1a7",
+        "name": "ZeroLatency",
+        "accessCode": "ZERO14",
+        "challengeId": "b68a74af-9774-490e-bbd3-60d5e502a84f",
+        "challengeClaimedAt": "2026-08-22T05:44:46.050Z",
+        "isFinalist": true,
+        "r2PresentationSlot": 7,
+        "round1Score": 73.5,
+        "round2Score": null,
+        "finalScore": null,
+        "createdAt": "2026-08-22T05:24:58.099Z",
+        "updatedAt": "2026-08-22T12:42:01.930Z"
+      }
+    },
+    {
       "id": "bf3d6356-49fb-45c6-a4eb-e35cb60ccd34",
       "teamId": "0210d0d9-7430-4b1c-869e-1607da47e02b",
       "roundNumber": 1,
@@ -7127,6 +7185,35 @@
       }
     },
     {
+      "id": "2121c01e-8ce8-4980-bb4e-34aac28ff8da",
+      "teamId": "b30a0154-0993-4e71-9db2-eceac90df1a7",
+      "roundNumber": 1,
+      "scratchUrl": "https://scratch.mit.edu/projects/1374319355/",
+      "shortDescription": "A virus has turned people into dangerous, mindless zombies, causing society to collapse. The player is a survivor trapped in an abandoned amusement park, where 22 zombies are closing in and 10 survivors are waiting to be rescued.\n\nThe goal is not just to survive. The player must fight the growing number of zombies, rescue all 10 survivors, and reach a train station. A train there can take them to another city where a cure has been discovered.\n\nBut the journey becomes harder as more zombies arrive and become more aggressive whenever the player takes them down.\n\nAfter reaching the train station, the player and the 10 survivors discover a terrible problem. The train has only 10 special disinfected berths, and each berth can safely carry only one person to the city with the cure.\n\nThere are 11 people, but only 10 berths.\n\nThe player now has an impossible choice: sacrifice one of the survivors, or sacrifice himself.\n\nIn the end, the player chooses to sacrifice himself, giving all 10 survivors a chance to reach the city and survive.",
+      "videoUrl": null,
+      "videoFileName": null,
+      "videoFileSize": null,
+      "status": "DRAFT",
+      "notes": "[WASD] is to move around, space and left click is to shoot the bullet, the bullet path follows the position of the mouse, the speed of zombies increases with every kill by 0.5, the game starts with pressing the green flag.",
+      "submittedAt": "2026-08-22T10:00:29.932Z",
+      "createdAt": "2026-08-22T10:00:29.933Z",
+      "updatedAt": "2026-08-22T10:00:29.933Z",
+      "team": {
+        "id": "b30a0154-0993-4e71-9db2-eceac90df1a7",
+        "name": "ZeroLatency",
+        "accessCode": "ZERO14",
+        "challengeId": "b68a74af-9774-490e-bbd3-60d5e502a84f",
+        "challengeClaimedAt": "2026-08-22T05:44:46.050Z",
+        "isFinalist": true,
+        "r2PresentationSlot": 7,
+        "round1Score": 73.5,
+        "round2Score": null,
+        "finalScore": null,
+        "createdAt": "2026-08-22T05:24:58.099Z",
+        "updatedAt": "2026-08-22T12:42:01.930Z"
+      }
+    },
+    {
       "id": "19612e2d-a1fa-4634-9ce2-e06e1afe96aa",
       "teamId": "97341474-cd27-4ef0-84d9-d425857b169b",
       "roundNumber": 1,
@@ -7153,35 +7240,6 @@
         "finalScore": null,
         "createdAt": "2026-08-22T05:25:09.511Z",
         "updatedAt": "2026-08-22T12:00:21.911Z"
-      }
-    },
-    {
-      "id": "2121c01e-8ce8-4980-bb4e-34aac28ff8da",
-      "teamId": "b30a0154-0993-4e71-9db2-eceac90df1a7",
-      "roundNumber": 1,
-      "scratchUrl": "https://scratch.mit.edu/projects/1374319355/",
-      "shortDescription": "A virus has turned people into dangerous, mindless zombies, causing society to collapse. The player is a survivor trapped in an abandoned amusement park, where 22 zombies are closing in and 10 survivors are waiting to be rescued.\n\nThe goal is not just to survive. The player must fight the growing number of zombies, rescue all 10 survivors, and reach a train station. A train there can take them to another city where a cure has been discovered.\n\nBut the journey becomes harder as more zombies arrive and become more aggressive whenever the player takes them down.\n\nAfter reaching the train station, the player and the 10 survivors discover a terrible problem. The train has only 10 special disinfected berths, and each berth can safely carry only one person to the city with the cure.\n\nThere are 11 people, but only 10 berths.\n\nThe player now has an impossible choice: sacrifice one of the survivors, or sacrifice himself.\n\nIn the end, the player chooses to sacrifice himself, giving all 10 survivors a chance to reach the city and survive.",
-      "videoUrl": null,
-      "videoFileName": null,
-      "videoFileSize": null,
-      "status": "SUBMITTED",
-      "notes": "[WASD] is to move around, space and left click is to shoot the bullet, the bullet path follows the position of the mouse, the speed of zombies increases with every kill by 0.5, the game starts with pressing the green flag.",
-      "submittedAt": "2026-08-22T10:00:29.932Z",
-      "createdAt": "2026-08-22T10:00:29.933Z",
-      "updatedAt": "2026-08-22T21:00:31.001Z",
-      "team": {
-        "id": "b30a0154-0993-4e71-9db2-eceac90df1a7",
-        "name": "ZeroLatency",
-        "accessCode": "ZERO14",
-        "challengeId": "b68a74af-9774-490e-bbd3-60d5e502a84f",
-        "challengeClaimedAt": "2026-08-22T05:44:46.050Z",
-        "isFinalist": true,
-        "r2PresentationSlot": 7,
-        "round1Score": 73.5,
-        "round2Score": null,
-        "finalScore": null,
-        "createdAt": "2026-08-22T05:24:58.099Z",
-        "updatedAt": "2026-08-22T12:42:01.930Z"
       }
     },
     {
@@ -7588,6 +7646,35 @@
         "finalScore": null,
         "createdAt": "2026-08-22T05:25:17.205Z",
         "updatedAt": "2026-08-22T12:00:22.860Z"
+      }
+    },
+    {
+      "id": "8acd210a-1289-466e-b309-88ae23fb6bc1",
+      "teamId": "b30a0154-0993-4e71-9db2-eceac90df1a7",
+      "roundNumber": 1,
+      "scratchUrl": "https://scratch.mit.edu/projects/1374319355/",
+      "shortDescription": "A virus has turned people into dangerous, mindless zombies, causing society to collapse. The player is a survivor trapped in an abandoned amusement park, where 22 zombies are closing in and 10 survivors are waiting to be rescued.\r\n\r\nThe goal is not just to survive. The player must fight the growing number of zombies, rescue all 10 survivors, and reach a train station. A train there can take them to another city where a cure has been discovered.\r\n\r\nBut the journey becomes harder as more zombies arrive and become more aggressive whenever the player takes them down.\r\n\r\nAfter reaching the train station, the player and the 10 survivors discover a terrible problem. The train has only 10 special disinfected berths, and each berth can safely carry only one person to the city with the cure.\r\n\r\nThere are 11 people, but only 10 berths.\r\n\r\nThe player now has an impossible choice: sacrifice one of the survivors, or sacrifice himself.\r\n\r\nIn the end, the player chooses to sacrifice himself, giving all 10 survivors a chance to reach the city and survive.",
+      "videoUrl": "/uploads/videos/team_b30a0154-0993-4e71-9db2-eceac90df1a7_r1_1787392964453.mov",
+      "videoFileName": "gameplay.mov",
+      "videoFileSize": 44126743,
+      "status": "SUBMITTED",
+      "notes": "[WASD] is to move around, space and left click is to shoot the bullet, the bullet path follows the position of the mouse, the speed of zombies increases with every kill by 0.5, the game starts with pressing the green flag. wave 1-4 unlocks with 3 kills each, for 5th wave to be cleared you need to kill 5 zombies",
+      "submittedAt": "2026-08-22T10:03:23.451Z",
+      "createdAt": "2026-08-22T10:03:23.452Z",
+      "updatedAt": "2026-08-22T10:03:23.452Z",
+      "team": {
+        "id": "b30a0154-0993-4e71-9db2-eceac90df1a7",
+        "name": "ZeroLatency",
+        "accessCode": "ZERO14",
+        "challengeId": "b68a74af-9774-490e-bbd3-60d5e502a84f",
+        "challengeClaimedAt": "2026-08-22T05:44:46.050Z",
+        "isFinalist": true,
+        "r2PresentationSlot": 7,
+        "round1Score": 73.5,
+        "round2Score": null,
+        "finalScore": null,
+        "createdAt": "2026-08-22T05:24:58.099Z",
+        "updatedAt": "2026-08-22T12:42:01.930Z"
       }
     },
     {
@@ -8255,93 +8342,6 @@
         "finalScore": null,
         "createdAt": "2026-08-22T05:25:13.701Z",
         "updatedAt": "2026-08-22T12:42:03.009Z"
-      }
-    },
-    {
-      "id": "01c3414a-9878-4ee6-ad39-5bd1de4c52c4",
-      "teamId": "b30a0154-0993-4e71-9db2-eceac90df1a7",
-      "roundNumber": 1,
-      "scratchUrl": "https://scratch.mit.edu/projects/1374319355/",
-      "shortDescription": "A virus has turned people into dangerous, mindless zombies, causing society to collapse. The player is a survivor trapped in an abandoned amusement park, where 22 zombies are closing in and 10 survivors are waiting to be rescued.\n\nThe goal is not just to survive. The player must fight the growing number of zombies, rescue all 10 survivors, and reach a train station. A train there can take them to another city where a cure has been discovered.\n\nBut the journey becomes harder as more zombies arrive and become more aggressive whenever the player takes them down.\n\nAfter reaching the train station, the player and the 10 survivors discover a terrible problem. The train has only 10 special disinfected berths, and each berth can safely carry only one person to the city with the cure.\n\nThere are 11 people, but only 10 berths.\n\nThe player now has an impossible choice: sacrifice one of the survivors, or sacrifice himself.\n\nIn the end, the player chooses to sacrifice himself, giving all 10 survivors a chance to reach the city and survive.",
-      "videoUrl": null,
-      "videoFileName": null,
-      "videoFileSize": null,
-      "status": "SUBMITTED",
-      "notes": "[WASD]",
-      "submittedAt": "2026-08-22T09:52:52.516Z",
-      "createdAt": "2026-08-22T09:52:52.517Z",
-      "updatedAt": "2026-08-22T21:00:31.001Z",
-      "team": {
-        "id": "b30a0154-0993-4e71-9db2-eceac90df1a7",
-        "name": "ZeroLatency",
-        "accessCode": "ZERO14",
-        "challengeId": "b68a74af-9774-490e-bbd3-60d5e502a84f",
-        "challengeClaimedAt": "2026-08-22T05:44:46.050Z",
-        "isFinalist": true,
-        "r2PresentationSlot": 7,
-        "round1Score": 73.5,
-        "round2Score": null,
-        "finalScore": null,
-        "createdAt": "2026-08-22T05:24:58.099Z",
-        "updatedAt": "2026-08-22T12:42:01.930Z"
-      }
-    },
-    {
-      "id": "702c3724-5926-41a0-9964-b1f5d99a8988",
-      "teamId": "b30a0154-0993-4e71-9db2-eceac90df1a7",
-      "roundNumber": 1,
-      "scratchUrl": "https://scratch.mit.edu/projects/1374319355/",
-      "shortDescription": "A virus has turned people into dangerous, mindless zombies, causing society to collapse. The player is a survivor trapped in an abandoned amusement park, where 22 zombies are closing in and 10 survivors are waiting to be rescued.\n\nThe goal is not just to survive. The player must fight the growing number of zombies, rescue all 10 survivors, and reach a train station. A train there can take them to another city where a cure has been discovered.\n\nBut the journey becomes harder as more zombies arrive and become more aggressive whenever the player takes them down.\n\nAfter reaching the train station, the player and the 10 survivors discover a terrible problem. The train has only 10 special disinfected berths, and each berth can safely carry only one person to the city with the cure.\n\nThere are 11 people, but only 10 berths.\n\nThe player now has an impossible choice: sacrifice one of the survivors, or sacrifice himself.\n\nIn the end, the player chooses to sacrifice himself, giving all 10 survivors a chance to reach the city and survive.",
-      "videoUrl": null,
-      "videoFileName": null,
-      "videoFileSize": null,
-      "status": "SUBMITTED",
-      "notes": "[WASD]",
-      "submittedAt": "2026-08-22T09:55:46.199Z",
-      "createdAt": "2026-08-22T09:55:46.199Z",
-      "updatedAt": "2026-08-22T21:00:31.001Z",
-      "team": {
-        "id": "b30a0154-0993-4e71-9db2-eceac90df1a7",
-        "name": "ZeroLatency",
-        "accessCode": "ZERO14",
-        "challengeId": "b68a74af-9774-490e-bbd3-60d5e502a84f",
-        "challengeClaimedAt": "2026-08-22T05:44:46.050Z",
-        "isFinalist": true,
-        "r2PresentationSlot": 7,
-        "round1Score": 73.5,
-        "round2Score": null,
-        "finalScore": null,
-        "createdAt": "2026-08-22T05:24:58.099Z",
-        "updatedAt": "2026-08-22T12:42:01.930Z"
-      }
-    },
-    {
-      "id": "8acd210a-1289-466e-b309-88ae23fb6bc1",
-      "teamId": "b30a0154-0993-4e71-9db2-eceac90df1a7",
-      "roundNumber": 1,
-      "scratchUrl": "https://scratch.mit.edu/projects/1374319355/",
-      "shortDescription": "A virus has turned people into dangerous, mindless zombies, causing society to collapse. The player is a survivor trapped in an abandoned amusement park, where 22 zombies are closing in and 10 survivors are waiting to be rescued.\r\n\r\nThe goal is not just to survive. The player must fight the growing number of zombies, rescue all 10 survivors, and reach a train station. A train there can take them to another city where a cure has been discovered.\r\n\r\nBut the journey becomes harder as more zombies arrive and become more aggressive whenever the player takes them down.\r\n\r\nAfter reaching the train station, the player and the 10 survivors discover a terrible problem. The train has only 10 special disinfected berths, and each berth can safely carry only one person to the city with the cure.\r\n\r\nThere are 11 people, but only 10 berths.\r\n\r\nThe player now has an impossible choice: sacrifice one of the survivors, or sacrifice himself.\r\n\r\nIn the end, the player chooses to sacrifice himself, giving all 10 survivors a chance to reach the city and survive.",
-      "videoUrl": "/uploads/videos/team_b30a0154-0993-4e71-9db2-eceac90df1a7_r1_1787392964453.mov",
-      "videoFileName": "gameplay.mov",
-      "videoFileSize": 44126743,
-      "status": "SUBMITTED",
-      "notes": "[WASD] is to move around, space and left click is to shoot the bullet, the bullet path follows the position of the mouse, the speed of zombies increases with every kill by 0.5, the game starts with pressing the green flag. wave 1-4 unlocks with 3 kills each, for 5th wave to be cleared you need to kill 5 zombies",
-      "submittedAt": "2026-08-22T10:03:23.451Z",
-      "createdAt": "2026-08-22T10:03:23.452Z",
-      "updatedAt": "2026-08-22T21:00:31.001Z",
-      "team": {
-        "id": "b30a0154-0993-4e71-9db2-eceac90df1a7",
-        "name": "ZeroLatency",
-        "accessCode": "ZERO14",
-        "challengeId": "b68a74af-9774-490e-bbd3-60d5e502a84f",
-        "challengeClaimedAt": "2026-08-22T05:44:46.050Z",
-        "isFinalist": true,
-        "r2PresentationSlot": 7,
-        "round1Score": 73.5,
-        "round2Score": null,
-        "finalScore": null,
-        "createdAt": "2026-08-22T05:24:58.099Z",
-        "updatedAt": "2026-08-22T12:42:01.930Z"
       }
     }
   ],
