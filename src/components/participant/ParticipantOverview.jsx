@@ -161,32 +161,23 @@ export default function ParticipantOverview({ onNavigateLeaderboard, onNavigateC
                 THANK YOU FOR PARTICIPATING, {team?.name || user.fullName}!
               </h3>
               <p className="text-xs sm:text-sm font-retro text-[#64748b] max-w-lg mx-auto leading-relaxed">
-                Sorry, your team did not qualify for the <strong className="text-[#1e293b]">Round 2 Finalist Live Pitches</strong>. You gave an incredible effort and built an awesome Scratch project! You can check the official standings, scores, and advancing finalists on the leaderboard.
+                Sorry, your team did not qualify for the <strong className="text-[#1e293b]">Round 2 Finalist Live Pitches</strong>. You gave an incredible effort and built an awesome Scratch project! You can check the official qualified finalists on the tournament leaderboard.
               </p>
             </div>
 
-            {/* Team Score & Problem Statement Summary Pill */}
+            {/* Team Status & Problem Statement Summary Pill */}
             <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
-              {team?.round1Score !== null && team?.round1Score !== undefined ? (
-                <div className="px-4 py-2 bg-[#f0f7ff] rounded-xl border border-[#bad6fc] text-center">
-                  <span className="text-[9px] font-pixel text-[#64748b] block uppercase">Your Round 1 Grade</span>
-                  <span className="text-sm font-pixel font-bold text-[#4e97fe]">
-                    {team.round1Score} / 100 PTS
-                  </span>
-                </div>
-              ) : team?.round1Scores?.[0]?.totalScore ? (
-                <div className="px-4 py-2 bg-[#f0f7ff] rounded-xl border border-[#bad6fc] text-center">
-                  <span className="text-[9px] font-pixel text-[#64748b] block uppercase">Your Round 1 Grade</span>
-                  <span className="text-sm font-pixel font-bold text-[#4e97fe]">
-                    {team.round1Scores[0].totalScore} / 100 PTS
-                  </span>
-                </div>
-              ) : null}
+              <div className="px-4 py-2 bg-slate-50 rounded-xl border border-slate-200 text-center">
+                <span className="text-[9px] font-pixel text-[#64748b] block uppercase font-bold">Round 1 Status</span>
+                <span className="text-xs font-pixel font-bold text-slate-600 block mt-0.5">
+                  DID NOT QUALIFY
+                </span>
+              </div>
 
               {team?.challenge && (
-                <div className="px-4 py-2 bg-slate-50 rounded-xl border border-slate-200 text-center">
-                  <span className="text-[9px] font-pixel text-[#64748b] block uppercase">Claimed Theme</span>
-                  <span className="text-xs font-pixel font-bold text-[#1e293b]">
+                <div className="px-4 py-2 bg-[#f0f7ff] rounded-xl border border-[#bad6fc] text-center">
+                  <span className="text-[9px] font-pixel text-[#64748b] block uppercase font-bold">Claimed Theme</span>
+                  <span className="text-xs font-pixel font-bold text-[#1e293b] block mt-0.5">
                     {team.challenge.title}
                   </span>
                 </div>

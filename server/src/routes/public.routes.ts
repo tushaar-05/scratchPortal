@@ -122,9 +122,19 @@ router.get('/leaderboard', async (req, res: Response) => {
       };
     });
 
-    // 1. R1 Standings: Ordered strictly by Round 1 score descending
-    const r1Sorted = [...scoredList].sort((a, b) => (b.round1Score || 0) - (a.round1Score || 0));
-    const r1Rankings = r1Sorted.map((t, idx) => ({ ...t, rank: idx + 1 }));
+    // 1. R1 Qualifiers: Finalists / Qualifiers first (alphabetically), followed by remaining squads (alphabetically) without exposing numeric ranks or scores
+    const r1Sorted = [...scoredList].sort((a, b) => {
+      if (a.isFinalist && !b.isFinalist) return -1;
+      if (!a.isFinalist && b.isFinalist) return 1;
+      return a.teamName.localeCompare(b.teamName);
+    });
+    const r1Rankings = r1Sorted.map((t) => ({
+      ...t,
+      rank: null,
+      round1Score: null,
+      r1Score: null,
+      finalScore: null,
+    }));
 
     // 2. Final Standings: Finalists first (ranked by finalScore desc), then non-finalists (by round1Score desc)
     const finalSorted = [...scoredList].sort((a, b) => {

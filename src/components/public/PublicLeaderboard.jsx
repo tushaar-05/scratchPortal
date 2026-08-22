@@ -314,15 +314,14 @@ export default function PublicLeaderboard() {
                 }`}
               >
                 <Crown className="w-2.5 h-2.5 text-[#141720]" />
-                Finalists Only ({currentRankings.filter((r) => r.isFinalist).length})
+                {activeTab === 'FINAL' ? 'Finalists Only' : 'Qualified Only'} ({currentRankings.filter((r) => r.isFinalist).length})
               </button>
             </div>
           </div>
 
           {/* Leaderboard Table Card */}
           <div className="bg-white rounded-2xl border-4 border-[#bad6fc] shadow-[6px_6px_0px_#bad6fc] overflow-hidden">
-            
-            {/* Table Header Banner */}
+                     {/* Table Header Banner */}
             <div className="bg-[#f0f7ff] px-6 py-3.5 border-b-2 border-[#bad6fc] flex items-center justify-between">
               <span className="font-pixel text-xs text-[#1e293b] font-bold uppercase flex items-center gap-2">
                 {activeTab === 'FINAL' ? (
@@ -333,7 +332,7 @@ export default function PublicLeaderboard() {
                 ) : (
                   <>
                     <Gamepad2 className="w-4 h-4 text-[#4e97fe]" />
-                    ROUND 1 SPRINT STANDINGS & QUALIFIERS
+                    ROUND 1 SPRINT QUALIFIERS
                   </>
                 )}
               </span>
@@ -352,9 +351,11 @@ export default function PublicLeaderboard() {
                 <table className="w-full text-left text-xs font-retro">
                   <thead className="bg-slate-50 text-[10px] font-pixel text-[#64748b] uppercase border-b border-slate-200">
                     <tr>
-                      <th className="px-4 py-3 text-center w-14">RANK</th>
-                      <th className="px-4 py-3">SQUAD / TEAM</th>
-                      <th className="px-4 py-3">GAME THEME</th>
+                      {activeTab === 'FINAL' && (
+                        <th className="px-4 py-3 text-center w-14">RANK</th>
+                      )}
+                      <th className="px-5 py-3">SQUAD / TEAM</th>
+                      <th className="px-5 py-3">GAME THEME</th>
                       {activeTab === 'FINAL' ? (
                         <>
                           <th className="px-4 py-3 text-center">R1 SPRINT</th>
@@ -362,53 +363,49 @@ export default function PublicLeaderboard() {
                           <th className="px-4 py-3 text-center font-bold text-[#f6ab3c]">FINAL SCORE</th>
                         </>
                       ) : (
-                        <>
-                          <th className="px-4 py-3 text-center font-bold text-[#4e97fe]">R1 SCORE</th>
-                          <th className="px-4 py-3 text-center">QUALIFICATION</th>
-                        </>
+                        <th className="px-5 py-3 text-center">ROUND 1 RESULT</th>
                       )}
-                      <th className="px-4 py-3 text-right">PROJECT</th>
+                      <th className="px-5 py-3 text-right">PROJECT</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     {filteredRankings.map((r, idx) => {
-                      const isTop3 = idx < 3;
-                      const isChampion = idx === 0 && activeTab === 'FINAL';
-
                       return (
                         <tr
                           key={r.teamId}
                           className={`hover:bg-[#f8fbff] transition-colors ${
-                            r.isFinalist ? 'bg-amber-50/20 font-medium' : ''
+                            r.isFinalist ? 'bg-emerald-50/25 font-medium' : ''
                           }`}
                         >
-                          {/* Rank Column */}
-                          <td className="px-4 py-3.5 text-center font-pixel">
-                            {idx === 0 ? (
-                              <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-100 text-amber-800 text-xs font-bold border border-amber-300">
-                                <Trophy className="w-3.5 h-3.5 text-amber-700" />
-                              </span>
-                            ) : idx === 1 ? (
-                              <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-slate-100 text-slate-800 text-xs font-bold border border-slate-300">
-                                <Award className="w-3.5 h-3.5 text-slate-700" />
-                              </span>
-                            ) : idx === 2 ? (
-                              <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-50 text-amber-900 text-xs font-bold border border-amber-200">
-                                <Award className="w-3.5 h-3.5 text-amber-800" />
-                              </span>
-                            ) : (
-                              <span className="text-[#64748b] font-bold text-xs">#{idx + 1}</span>
-                            )}
-                          </td>
+                          {/* Rank Column (Only shown on Grand Finale tab) */}
+                          {activeTab === 'FINAL' && (
+                            <td className="px-4 py-3.5 text-center font-pixel">
+                              {idx === 0 ? (
+                                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-100 text-amber-800 text-xs font-bold border border-amber-300">
+                                  <Trophy className="w-3.5 h-3.5 text-amber-700" />
+                                </span>
+                              ) : idx === 1 ? (
+                                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-slate-100 text-slate-800 text-xs font-bold border border-slate-300">
+                                  <Award className="w-3.5 h-3.5 text-slate-700" />
+                                </span>
+                              ) : idx === 2 ? (
+                                <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-50 text-amber-900 text-xs font-bold border border-amber-200">
+                                  <Award className="w-3.5 h-3.5 text-amber-800" />
+                                </span>
+                              ) : (
+                                <span className="text-[#64748b] font-bold text-xs">#{idx + 1}</span>
+                              )}
+                            </td>
+                          )}
 
                           {/* Squad Name & Members */}
-                          <td className="px-4 py-3.5">
+                          <td className="px-5 py-3.5">
                             <div className="flex items-center gap-2">
-                              <span className="font-bold font-pixel text-xs text-[#1e293b]">
+                              <span className="font-bold font-pixel text-xs sm:text-sm text-[#1e293b]">
                                 {r.teamName}
                               </span>
                               {r.isFinalist && (
-                                <span className="text-[9px] font-pixel px-1.5 py-0.5 rounded bg-[#ffbe00] text-[#141720] font-black shrink-0">
+                                <span className="text-[9px] font-pixel px-2 py-0.5 rounded bg-[#ffbe00] text-[#141720] font-black shrink-0 shadow-2xs">
                                   FINALIST
                                 </span>
                               )}
@@ -421,7 +418,7 @@ export default function PublicLeaderboard() {
                           </td>
 
                           {/* Challenge Problem Statement */}
-                          <td className="px-4 py-3.5">
+                          <td className="px-5 py-3.5">
                             <span className="font-bold text-xs text-[#1e293b] block">
                               {r.challengeTitle}
                             </span>
@@ -432,7 +429,7 @@ export default function PublicLeaderboard() {
                             )}
                           </td>
 
-                          {/* Scores Columns */}
+                          {/* Scores or Qualification Status */}
                           {activeTab === 'FINAL' ? (
                             <>
                               <td className="px-4 py-3.5 text-center font-mono text-xs text-slate-600">
@@ -446,33 +443,28 @@ export default function PublicLeaderboard() {
                               </td>
                             </>
                           ) : (
-                            <>
-                              <td className="px-4 py-3.5 text-center font-mono font-bold text-sm text-[#4e97fe]">
-                                {r.round1Score ?? 0} / 100
-                              </td>
-                              <td className="px-4 py-3.5 text-center">
-                                {r.isFinalist ? (
-                                  <span className="text-[10px] font-pixel px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold inline-flex items-center gap-1">
-                                    <Trophy className="w-2.5 h-2.5 text-emerald-600" />
-                                    ADVANCED
-                                  </span>
-                                ) : (
-                                  <span className="text-[10px] font-retro text-slate-400">
-                                    Participant
-                                  </span>
-                                )}
-                              </td>
-                            </>
+                            <td className="px-5 py-3.5 text-center">
+                              {r.isFinalist ? (
+                                <span className="text-[10px] sm:text-[11px] font-pixel px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-700 border-2 border-emerald-300 font-bold inline-flex items-center gap-1.5 shadow-2xs">
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                                  QUALIFIED FOR ROUND 2
+                                </span>
+                              ) : (
+                                <span className="text-[10px] font-pixel px-2.5 py-1 rounded-lg bg-slate-100 text-slate-500 font-bold inline-flex items-center gap-1">
+                                  DID NOT QUALIFY
+                                </span>
+                              )}
+                            </td>
                           )}
 
                           {/* Project Links */}
-                          <td className="px-4 py-3.5 text-right">
+                          <td className="px-5 py-3.5 text-right">
                             {r.scratchUrl ? (
                               <a
                                 href={r.scratchUrl}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="inline-flex items-center gap-1 text-[11px] font-pixel text-[#4e97fe] hover:underline font-bold px-2 py-1 bg-white rounded border border-[#bad6fc]"
+                                className="inline-flex items-center gap-1 text-[11px] font-pixel text-[#4e97fe] hover:underline font-bold px-2.5 py-1 bg-white rounded-lg border border-[#bad6fc] shadow-2xs hover:bg-[#f0f7ff]"
                               >
                                 Scratch ↗
                               </a>

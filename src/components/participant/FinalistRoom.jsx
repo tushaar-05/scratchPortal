@@ -63,16 +63,16 @@ export default function FinalistRoom({ onNavigateLeaderboard }) {
           </div>
         </div>
 
-        {/* Round 1 Grade Display */}
-        <div className="relative z-10 bg-[#f0f7ff] px-6 py-4 rounded-2xl border-2 border-[#bad6fc] shadow-sm text-center shrink-0 min-w-[170px]">
-          <span className="text-[10px] uppercase font-pixel font-bold text-[#64748b] block tracking-wide">
-            ROUND 1 GRADE
+        {/* Round 1 Qualification Status Display */}
+        <div className="relative z-10 bg-emerald-50 px-6 py-4 rounded-2xl border-2 border-emerald-300 shadow-sm text-center shrink-0 min-w-[180px]">
+          <span className="text-[10px] uppercase font-pixel font-bold text-emerald-800 block tracking-wide">
+            ROUND 1 RESULT
           </span>
-          <span className="text-2xl sm:text-3xl font-black font-pixel text-[#4e97fe] block mt-0.5">
-            {team?.round1Score ?? team?.round1Scores?.[0]?.totalScore ?? '—'} <span className="text-xs font-pixel text-slate-500 font-bold">/ 100</span>
+          <span className="text-xl sm:text-2xl font-black font-pixel text-emerald-600 block mt-1">
+            QUALIFIED
           </span>
-          <span className="text-[10px] font-pixel text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 block mt-1.5 font-bold">
-            QUALIFIED FINALIST
+          <span className="text-[10px] font-pixel text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-md border border-emerald-300 block mt-1.5 font-bold">
+            ★ ADVANCED TO ROUND 2
           </span>
         </div>
       </div>

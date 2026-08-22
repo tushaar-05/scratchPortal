@@ -275,13 +275,13 @@ export default function ChallengeDetailModal({
                             {t.name}
                           </span>
 
-                          {hasScore ? (
-                            <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 font-pixel text-[9px] font-black shrink-0 flex items-center gap-1">
-                              <Award className="w-2.5 h-2.5 text-emerald-700" /> {t.round1Score} / 100
+                          {t.isFinalist ? (
+                            <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 font-pixel text-[9px] font-bold shrink-0 flex items-center gap-1">
+                              <CheckCircle2 className="w-2.5 h-2.5 text-emerald-700" /> QUALIFIED
                             </span>
                           ) : hasSub ? (
-                            <span className="px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300 font-pixel text-[9px] font-bold shrink-0 animate-pulse">
-                              GRADING
+                            <span className="px-2 py-0.5 rounded bg-amber-100 text-amber-800 border border-amber-300 font-pixel text-[9px] font-bold shrink-0">
+                              SUBMITTED
                             </span>
                           ) : (
                             <span className="px-2 py-0.5 rounded bg-white text-slate-500 font-pixel text-[9px] shrink-0 border border-slate-200">
