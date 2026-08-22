@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../lib/api.js';
+import VideoPlayerModal, { resolveVideoUrl } from '../common/VideoPlayerModal.jsx';
 import {
   X,
   Award,
@@ -27,6 +28,7 @@ function getScratchProjectId(url) {
 }
 
 export default function Round1RubricModal({ team, existingScore, onClose, onScoreSaved }) {
+  const [showVideoModal, setShowVideoModal] = useState(false);
   const [basic, setBasic] = useState(existingScore?.basicWorkingScore ?? 0);
   const [visual, setVisual] = useState(existingScore?.visualSpritesScore ?? 0);
   const [creativity, setCreativity] = useState(existingScore?.creativityScore ?? 0);
@@ -308,18 +310,17 @@ export default function Round1RubricModal({ team, existingScore, onClose, onScor
                     </div>
                   )}
 
-                  {/* Video Attachment Link */}
+                  {/* Video Attachment Button */}
                   {r1Sub?.videoUrl && (
                     <div className="pt-2 border-t border-blue-200/70">
-                      <a
-                        href={r1Sub.videoUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-50 border border-rose-200 text-xs font-semibold text-rose-700 hover:bg-rose-100 transition-colors"
+                      <button
+                        type="button"
+                        onClick={() => setShowVideoModal(true)}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-50 border border-rose-200 text-xs font-semibold text-rose-700 hover:bg-rose-100 transition-colors cursor-pointer"
                       >
                         <Film className="w-3.5 h-3.5" />
-                        <span>Watch Demo Video Clip ↗</span>
-                      </a>
+                        <span>Watch Demo Video Clip ▶</span>
+                      </button>
                     </div>
                   )}
                 </div>
@@ -683,6 +684,18 @@ export default function Round1RubricModal({ team, existingScore, onClose, onScor
         </div>
 
       </div>
+
+      {showVideoModal && r1Sub?.videoUrl && (
+        <VideoPlayerModal
+          video={{
+            url: resolveVideoUrl(r1Sub.videoUrl),
+            rawUrl: r1Sub.videoUrl,
+            title: team.name,
+            fileName: r1Sub.videoFileName || 'Gameplay Demo Video',
+          }}
+          onClose={() => setShowVideoModal(false)}
+        />
+      )}
     </div>
   );
 }

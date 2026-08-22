@@ -4,6 +4,7 @@ import api from '../../lib/api.js';
 import socketClient from '../../lib/socket.js';
 import Round1RubricModal from './Round1RubricModal.jsx';
 import Round2RubricModal from './Round2RubricModal.jsx';
+import VideoPlayerModal, { resolveVideoUrl } from '../common/VideoPlayerModal.jsx';
 import {
   Award,
   Gamepad2,
@@ -19,11 +20,14 @@ import {
   AlertTriangle,
   FileText,
   FileVideo,
+  Play,
   Save,
   Users,
   Film,
   Trophy,
   Mic,
+  MessageSquare,
+  Info,
   ChevronRight,
   ChevronDown,
   ChevronUp,
@@ -33,6 +37,7 @@ import {
 
 export default function JudgeDashboard() {
   const { user, eventConfig } = useAuth();
+  const [activeVideoModal, setActiveVideoModal] = useState(null);
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedTeam, setSelectedTeam] = useState(null);
@@ -326,6 +331,82 @@ export default function JudgeDashboard() {
           <span className="text-[10px] font-pixel px-2.5 py-1 rounded-lg bg-amber-200/80 text-amber-900 border border-amber-300 font-bold shrink-0">
             {totalFinalistsCount} Finalist Squads Qualified
           </span>
+        </div>
+      )}
+
+      {/* Round 2 Official Rubric Reference Card */}
+      {isViewingRound2 && (
+        <div className="bg-[#121620] text-white rounded-3xl border-2 border-amber-500/40 p-5 sm:p-6 shadow-xl space-y-4 transition-all">
+          
+          {/* Header */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 text-[#ffbe00] flex items-center justify-center shrink-0">
+                <MessageSquare className="w-5 h-5 text-[#ffbe00]" />
+              </div>
+              <div>
+                <h2 className="text-base sm:text-lg font-bold font-pixel text-white tracking-wide">
+                  ROUND 2 RUBRIC
+                </h2>
+                <p className="text-xs font-retro text-[#ffbe00]">
+                  Present & Defend — 100 Points Total
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setShowRubricGuide(!showRubricGuide)}
+              className="text-xs font-retro text-slate-400 hover:text-white px-3 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700 transition-colors flex items-center gap-1.5 cursor-pointer"
+            >
+              <span>{showRubricGuide ? 'Hide Details' : 'Show Details'}</span>
+              {showRubricGuide ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+            </button>
+          </div>
+
+          {showRubricGuide && (
+            <div className="space-y-3 pt-1 animate-fadeIn">
+              
+              {/* Criterion 1: Presentation Quality */}
+              <div className="bg-[#1e2330]/90 border border-slate-700/80 p-4 rounded-2xl space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs sm:text-sm font-bold font-pixel text-white tracking-tight">
+                    PRESENTATION QUALITY
+                  </span>
+                  <span className="text-xs sm:text-sm font-bold font-pixel text-[#10b981]">
+                    30%
+                  </span>
+                </div>
+                <p className="text-xs font-retro text-slate-400 leading-relaxed">
+                  Structure, clarity, confidence, time management and visual communication
+                </p>
+              </div>
+
+              {/* Criterion 2: Project Explanation & Technical Q&A */}
+              <div className="bg-[#1e2330]/90 border border-slate-700/80 p-4 rounded-2xl space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs sm:text-sm font-bold font-pixel text-white tracking-tight">
+                    PROJECT EXPLANATION & TECHNICAL Q&A
+                  </span>
+                  <span className="text-xs sm:text-sm font-bold font-pixel text-[#eab308]">
+                    70%
+                  </span>
+                </div>
+                <p className="text-xs font-retro text-slate-400 leading-relaxed">
+                  Depth of understanding, explaining logic & design decisions, answering judge questions, and defending implementation choices
+                </p>
+              </div>
+
+              {/* Info Notice Box matching the attached image */}
+              <div className="bg-[#1a1c2e] border border-indigo-500/30 p-4 rounded-2xl flex items-start gap-3 text-slate-300">
+                <Info className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
+                <p className="text-xs font-retro leading-relaxed text-slate-300">
+                  During Round 2, judges may ask any team member to explain specific scripts, variables or mechanics. If a team cannot explain a substantial portion of its own project, scores may be reduced.
+                </p>
+              </div>
+
+            </div>
+          )}
+
         </div>
       )}
 
@@ -675,9 +756,22 @@ export default function JudgeDashboard() {
                             </a>
                           )}
                           {activeSub.videoUrl && (
-                            <span className="text-[10px] font-pixel text-rose-600 bg-rose-50 px-2 py-1 rounded-lg border border-rose-200 font-bold flex items-center gap-1">
-                              <FileVideo className="w-3 h-3" /> Video Attached
-                            </span>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setActiveVideoModal({
+                                  url: resolveVideoUrl(activeSub.videoUrl),
+                                  rawUrl: activeSub.videoUrl,
+                                  title: t.name,
+                                  fileName: activeSub.videoFileName || 'Submitted Video Demo',
+                                });
+                              }}
+                              className="text-[10px] font-pixel text-rose-700 bg-rose-50 hover:bg-rose-100 px-2.5 py-1 rounded-lg border border-rose-200 font-bold flex items-center gap-1 shadow-3xs cursor-pointer transition-colors active:translate-y-0.5"
+                              title="Click to watch gameplay demo video"
+                            >
+                              <Play className="w-3 h-3 text-rose-600 fill-rose-600" /> Watch Video ▶
+                            </button>
                           )}
                         </div>
                       </div>
@@ -771,6 +865,14 @@ export default function JudgeDashboard() {
           existingScore={selectedTeam.myR2Score || selectedTeam.round2Scores?.find((s) => s.judgeId === user?.id)}
           onClose={() => setSelectedTeam(null)}
           onScoreSaved={fetchTeams}
+        />
+      )}
+
+      {/* Video Demo Player Modal */}
+      {activeVideoModal && (
+        <VideoPlayerModal
+          video={activeVideoModal}
+          onClose={() => setActiveVideoModal(null)}
         />
       )}
 

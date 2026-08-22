@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import api from '../../lib/api.js';
 import socketClient from '../../lib/socket.js';
 import ChallengeEditorModal from './ChallengeEditorModal.jsx';
+import VideoPlayerModal, { resolveVideoUrl } from '../common/VideoPlayerModal.jsx';
 import {
   Users,
   Search,
@@ -438,58 +439,10 @@ export default function TeamDetailsView({ defaultTabMode, onNavigateLeaderboard,
 
       {/* Video Lightbox Modal */}
       {activeVideoModal && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md animate-fadeIn"
-          onClick={() => setActiveVideoModal(null)}
-        >
-          <div
-            className="w-full max-w-3xl bg-slate-900 rounded-3xl border-4 border-[#4e97fe] shadow-2xl p-5 space-y-4 text-white"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-between pb-3 border-b border-slate-700">
-              <div className="flex items-center gap-2.5">
-                <FileVideo className="w-5 h-5 text-[#4e97fe]" />
-                <div>
-                  <h3 className="text-sm font-bold font-pixel">{activeVideoModal.title}</h3>
-                  <p className="text-[11px] font-retro text-slate-400">
-                    {activeVideoModal.fileName || 'Gameplay Video Demo'}
-                  </p>
-                </div>
-              </div>
-              <button
-                onClick={() => setActiveVideoModal(null)}
-                className="w-8 h-8 rounded-xl bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-colors cursor-pointer"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-
-            <div className="rounded-2xl overflow-hidden bg-black flex items-center justify-center min-h-[300px] max-h-[500px]">
-              {activeVideoModal.url.startsWith('/uploads/') ? (
-                <video
-                  src={activeVideoModal.url}
-                  controls
-                  autoPlay
-                  className="w-full h-full max-h-[480px] object-contain"
-                />
-              ) : (
-                <div className="p-8 text-center space-y-3">
-                  <Play className="w-12 h-12 text-[#ffbe00] mx-auto" />
-                  <p className="text-xs font-retro text-slate-300">External Video Link (YouTube / Google Drive / Loom)</p>
-                  <a
-                    href={activeVideoModal.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-pixel font-bold shadow-md transition-all cursor-pointer"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span>OPEN EXTERNAL VIDEO IN NEW TAB ↗</span>
-                  </a>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+        <VideoPlayerModal
+          video={activeVideoModal}
+          onClose={() => setActiveVideoModal(null)}
+        />
       )}
 
       {/* Squad Full Drilldown Modal */}

@@ -258,28 +258,18 @@ router.post('/score/r2', async (req: AuthenticatedRequest, res: Response) => {
 
     const pres = Number(presentationQualityScore) || 0;
     const expl = Number(projectExplanationScore) || 0;
-    const qa = Number(technicalQaScore) || 0;
-    const teamContrib = Number(teamContributionScore) || 0;
 
-    // Validate Rubric ranges
+    // Validate Rubric ranges (New Rubric: 30% Presentation Quality, 70% Project Explanation & Technical Q&A)
     if (pres < 0 || pres > 30) {
       res.status(400).json({ error: 'Presentation Quality score must be between 0 and 30.' });
       return;
     }
-    if (expl < 0 || expl > 40) {
-      res.status(400).json({ error: 'Project Explanation score must be between 0 and 40.' });
-      return;
-    }
-    if (qa < 0 || qa > 20) {
-      res.status(400).json({ error: 'Technical Q&A score must be between 0 and 20.' });
-      return;
-    }
-    if (teamContrib < 0 || teamContrib > 10) {
-      res.status(400).json({ error: 'Team Contribution score must be between 0 and 10.' });
+    if (expl < 0 || expl > 70) {
+      res.status(400).json({ error: 'Project Explanation & Technical Q&A score must be between 0 and 70.' });
       return;
     }
 
-    const totalScore = Number((pres + expl + qa + teamContrib).toFixed(2));
+    const totalScore = Number((pres + expl).toFixed(2));
 
     // Ensure Judge and Team exist to avoid foreign key errors from stale client tokens/IDs
     const judgeUser = await prisma.user.findUnique({ where: { id: judgeId } });
@@ -304,8 +294,8 @@ router.post('/score/r2', async (req: AuthenticatedRequest, res: Response) => {
       update: {
         presentationQualityScore: pres,
         projectExplanationScore: expl,
-        technicalQaScore: qa,
-        teamContributionScore: teamContrib,
+        technicalQaScore: 0,
+        teamContributionScore: 0,
         totalScore,
         comments: comments || null,
         isFinal: Boolean(isFinal),
@@ -316,8 +306,8 @@ router.post('/score/r2', async (req: AuthenticatedRequest, res: Response) => {
         judgeId,
         presentationQualityScore: pres,
         projectExplanationScore: expl,
-        technicalQaScore: qa,
-        teamContributionScore: teamContrib,
+        technicalQaScore: 0,
+        teamContributionScore: 0,
         totalScore,
         comments: comments || null,
         isFinal: Boolean(isFinal),

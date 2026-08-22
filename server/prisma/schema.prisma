@@ -139,10 +139,10 @@ model Round2Score {
   team                     Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
   judgeId                  String
   judge                    User     @relation("JudgeR2Scores", fields: [judgeId], references: [id])
-  presentationQualityScore Float    // Max 30 points
-  projectExplanationScore  Float    // Max 40 points
-  technicalQaScore         Float    // Max 20 points
-  teamContributionScore    Float    // Max 10 points
+  presentationQualityScore Float    // Max 30 points (30% - Presentation Quality)
+  projectExplanationScore  Float    // Max 70 points (70% - Project Explanation & Technical Q&A)
+  technicalQaScore         Float?   @default(0)
+  teamContributionScore    Float?   @default(0)
   totalScore               Float    // Max 100 points
   comments                 String?  @db.Text
   isFinal                  Boolean  @default(false)
