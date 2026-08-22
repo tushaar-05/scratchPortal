@@ -198,7 +198,13 @@ const CHALLENGES_DATA = [
 async function main() {
   console.log('[Seed] Seeding Scratch Game Hackathon Database...');
 
-  // 1. Clean existing records
+  // 1. Safety Guard: Only clean existing records if explicitly requested
+  if (process.env.ALLOW_DB_RESET !== 'true') {
+    console.warn('[Seed] ABORTED: ALLOW_DB_RESET is not set to "true". Refusing to wipe live database data.');
+    console.warn('[Seed] To deliberately re-seed, run: ALLOW_DB_RESET=true npm run prisma:seed');
+    return;
+  }
+
   await prisma.auditLog.deleteMany();
   await prisma.round2Score.deleteMany();
   await prisma.round1Score.deleteMany();

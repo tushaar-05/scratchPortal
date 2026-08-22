@@ -1,0 +1,3 @@
+id,teamId,teamName,judgeId,judgeName,presentationQualityScore,projectExplanationScore,technicalQaScore,teamContributionScore,totalScore,comments,isFinal,submittedAt
+"6d723a93-d976-483c-b4a1-572140154f2e","8d5fdc37-5032-4a94-b3ea-15913550d442","Tech Brains","e63263ff-98a9-4dc2-8cec-7d4285084c02","Chief Organizer (Admin)",14,22,14,8,58,"",true,"Sat Aug 22 2026 18:20:28 GMT+0530 (India Standard Time)"
+"112b7354-1ac4-44f4-8bff-012f420adce2","8d5fdc37-5032-4a94-b3ea-15913550d442","Tech Brains","8be42b52-6c71-4973-8c38-359f1fc66ee1","Dr. Alan Turing (Judge 1)",14,9,24,10,57,"",true,"Sat Aug 22 2026 18:23:31 GMT+0530 (India Standard Time)"
