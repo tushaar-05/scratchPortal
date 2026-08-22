@@ -276,7 +276,52 @@ async function main() {
     }
   });
 
-  console.log(`[Seed] Seeded 1 Organizer and 2 Judges.`);
+  const judge3 = await prisma.user.create({
+    data: {
+      email: 'judge3@hackathon.com',
+      passwordHash: judgePasswordHash,
+      fullName: 'Dr. Claude Shannon (Judge 3)',
+      role: Role.JUDGE
+    }
+  });
+
+  const judge4 = await prisma.user.create({
+    data: {
+      email: 'judge4@hackathon.com',
+      passwordHash: judgePasswordHash,
+      fullName: 'Dr. Grace Hopper (Judge 4)',
+      role: Role.JUDGE
+    }
+  });
+
+  const judge5 = await prisma.user.create({
+    data: {
+      email: 'judge5@hackathon.com',
+      passwordHash: judgePasswordHash,
+      fullName: 'Dr. John von Neumann (Judge 5)',
+      role: Role.JUDGE
+    }
+  });
+
+  const judge6 = await prisma.user.create({
+    data: {
+      email: 'judge6@hackathon.com',
+      passwordHash: judgePasswordHash,
+      fullName: 'Dr. Margaret Hamilton (Judge 6)',
+      role: Role.JUDGE
+    }
+  });
+
+  const judge7 = await prisma.user.create({
+    data: {
+      email: 'judge7@hackathon.com',
+      passwordHash: judgePasswordHash,
+      fullName: 'Dr. Linus Torvalds (Judge 7)',
+      role: Role.JUDGE
+    }
+  });
+
+  console.log(`[Seed] Seeded 1 Organizer and 7 Judges.`);
 
   // 5. Seed 76 Real Teams with Full Member Rosters from CSV
   const realTeamsCsv = `id,password,team_name,leader_name,leader_email,leader_phone,member2_name,member2_email,member3_name,member3_email
@@ -357,7 +402,8 @@ SARA54,E26RA54#11,Sara,Sara Kottawar,e26b07f0709@adypu.edu.in,7498310054,Harshit
 VORT78,E26RT78#11,Vortex,Prashant Kumar,e26b07f0799@adypu.edu.in,8055183878,Nitesh Kumar,niteshkumar03961@gmail.com,Raja Shirjeel,rajasarjais@gmail.com
 HACK47,GVTCK47#8,Hacker Janata Party,Md Arman,gvtd6485@gmail.com,9508656947,Aaditya Deshmukh-Patil,aadityaudp19@gmail.com,,
 DWAR56,ARFS45#11,Dwarfs,Alok Chauhan,alok.dwar56@adypu.edu.in,9999999999,,,,
-INFI56,NITY45#11,Infinity,Stavan,stavan@adypu.edu.in,9999999999,,,,`;
+INFI56,NITY45#11,Infinity,Stavan,stavan@adypu.edu.in,9999999999,,,,
+MEOWW,MEOW123,MEOW,Tushar,tushar.meow@adypu.edu.in,9999999999,,,,`;
 
   const lines = realTeamsCsv.trim().split('\n').slice(1);
   const usedAccessCodes = new Set<string>();

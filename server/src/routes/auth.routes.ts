@@ -223,9 +223,16 @@ router.post('/login', async (req, res: Response) => {
       return;
     }
 
-    // 1. Try finding user directly by email
+    // 1. Try finding user directly by email or common aliases (e.g. 'judge1' -> 'judge1@hackathon.com', 'admin' -> 'admin@hackathon.com')
     let user = await prisma.user.findFirst({
-      where: { email: { equals: loginId, mode: 'insensitive' } },
+      where: {
+        OR: [
+          { email: { equals: loginId, mode: 'insensitive' } },
+          { email: { startsWith: `${loginId}@`, mode: 'insensitive' } },
+          ...(loginId === 'judge' ? [{ email: { equals: 'judge1@hackathon.com', mode: 'insensitive' } }] : []),
+          ...(loginId === 'admin' ? [{ email: { equals: 'admin@hackathon.com', mode: 'insensitive' } }] : []),
+        ],
+      },
       include: {
         team: {
           include: {
