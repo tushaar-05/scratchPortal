@@ -426,42 +426,34 @@ router.post('/teams/:teamId/toggle-finalist', async (req: AuthenticatedRequest, 
   }
 });
 
-// 4c. Auto-Qualify Top Scoring Teams (1 per Challenge Theme)
+// 4c. Auto-Qualify Top Scoring Teams Overall (Default Top 10)
 router.post('/auto-qualify-finalists', async (req: AuthenticatedRequest, res: Response) => {
   try {
-    const challenges = await prisma.challenge.findMany({
-      include: {
-        teams: {
-          include: { round1Scores: true },
-        },
-      },
-    });
+    const limit = Number(req.body?.limit) || 10;
 
     // Reset all finalists first
     await prisma.team.updateMany({
       data: { isFinalist: false, r2PresentationSlot: null },
     });
 
+    const topTeams = await prisma.team.findMany({
+      orderBy: { round1Score: 'desc' },
+      take: limit,
+      include: { challenge: true, members: true },
+    });
+
     const qualifiedTeams = [];
-    let slot = 1;
-
-    for (const c of challenges) {
-      if (!c.teams || c.teams.length === 0) continue;
-      // Sort teams by round1Score descending
-      const sorted = [...c.teams].sort((a, b) => (b.round1Score || 0) - (a.round1Score || 0));
-      const topTeam = sorted[0];
-
-      if (topTeam) {
-        const updated = await prisma.team.update({
-          where: { id: topTeam.id },
-          data: {
-            isFinalist: true,
-            r2PresentationSlot: slot++,
-          },
-          include: { challenge: true, members: true },
-        });
-        qualifiedTeams.push(updated);
-      }
+    for (let i = 0; i < topTeams.length; i++) {
+      const t = topTeams[i];
+      const updated = await prisma.team.update({
+        where: { id: t.id },
+        data: {
+          isFinalist: true,
+          r2PresentationSlot: i + 1,
+        },
+        include: { challenge: true, members: true },
+      });
+      qualifiedTeams.push(updated);
     }
 
     try {
