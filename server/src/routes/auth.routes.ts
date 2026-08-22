@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import { prisma } from '../lib/prisma.js';
 import { signToken } from '../lib/jwt.js';
 import { requireAuth, AuthenticatedRequest } from '../middleware/auth.js';
-import { Role } from '@prisma/client';
+import { Role, Prisma } from '@prisma/client';
 
 const router = Router();
 
@@ -224,14 +224,20 @@ router.post('/login', async (req, res: Response) => {
     }
 
     // 1. Try finding user directly by email or common aliases (e.g. 'judge1' -> 'judge1@hackathon.com', 'admin' -> 'admin@hackathon.com')
+    const orConditions: Prisma.UserWhereInput[] = [
+      { email: { equals: loginId, mode: 'insensitive' } },
+      { email: { startsWith: `${loginId}@`, mode: 'insensitive' } },
+    ];
+    if (loginId === 'judge') {
+      orConditions.push({ email: { equals: 'judge1@hackathon.com', mode: 'insensitive' } });
+    }
+    if (loginId === 'admin') {
+      orConditions.push({ email: { equals: 'admin@hackathon.com', mode: 'insensitive' } });
+    }
+
     let user = await prisma.user.findFirst({
       where: {
-        OR: [
-          { email: { equals: loginId, mode: 'insensitive' } },
-          { email: { startsWith: `${loginId}@`, mode: 'insensitive' } },
-          ...(loginId === 'judge' ? [{ email: { equals: 'judge1@hackathon.com', mode: 'insensitive' } }] : []),
-          ...(loginId === 'admin' ? [{ email: { equals: 'admin@hackathon.com', mode: 'insensitive' } }] : []),
-        ],
+        OR: orConditions,
       },
       include: {
         team: {
@@ -253,22 +259,24 @@ router.post('/login', async (req, res: Response) => {
           ],
         },
         include: {
-          members: {
-            include: {
-              team: {
-                include: {
-                  challenge: true,
-                  members: { select: { id: true, fullName: true, email: true, isTeamLeader: true } },
-                },
-              },
-            },
-          },
+          members: true,
         },
       });
 
       if (team && team.members.length > 0) {
         // Pick the team leader or first member
-        user = team.members.find((m) => m.isTeamLeader) || team.members[0];
+        const foundMember = team.members.find((m) => m.isTeamLeader) || team.members[0];
+        user = await prisma.user.findUnique({
+          where: { id: foundMember.id },
+          include: {
+            team: {
+              include: {
+                challenge: true,
+                members: { select: { id: true, fullName: true, email: true, isTeamLeader: true } },
+              },
+            },
+          },
+        });
       }
     }
 
