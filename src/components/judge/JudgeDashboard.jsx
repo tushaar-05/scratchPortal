@@ -33,6 +33,7 @@ import {
   ChevronUp,
   ShieldCheck,
   Cpu,
+  Zap,
 } from 'lucide-react';
 
 export default function JudgeDashboard() {
@@ -682,9 +683,24 @@ export default function JudgeDashboard() {
                       ) : null}
 
                       {t.isFinalist && (
-                        <span className="text-[9px] font-pixel px-2 py-0.5 rounded-md bg-[#ffbe00] text-[#141720] font-black shrink-0 flex items-center gap-1 shadow-xs">
-                          <Trophy className="w-2.5 h-2.5 text-[#141720]" />
-                          FINALIST
+                        <span
+                          className={`text-[9px] font-pixel px-2 py-0.5 rounded-md font-black shrink-0 flex items-center gap-1 shadow-xs ${
+                            t.name?.toLowerCase().includes('elon') || t.accessCode === 'ELON15'
+                              ? 'bg-purple-600 text-white'
+                              : 'bg-[#ffbe00] text-[#141720]'
+                          }`}
+                        >
+                          {t.name?.toLowerCase().includes('elon') || t.accessCode === 'ELON15' ? (
+                            <>
+                              <Zap className="w-2.5 h-2.5 text-yellow-300 fill-yellow-300" />
+                              WILDCARD
+                            </>
+                          ) : (
+                            <>
+                              <Trophy className="w-2.5 h-2.5 text-[#141720]" />
+                              FINALIST
+                            </>
+                          )}
                         </span>
                       )}
                     </div>

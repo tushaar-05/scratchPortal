@@ -17,6 +17,7 @@ import {
   Filter,
   Mic,
   Lock,
+  Zap,
 } from 'lucide-react';
 
 export default function PublicLeaderboard() {
@@ -281,6 +282,64 @@ export default function PublicLeaderboard() {
             </div>
           )}
 
+          {/* Dedicated Jury Wildcard Finalist Entry Showcase Banner */}
+          {(() => {
+            const wildcardEntry = currentRankings.find(
+              (r) => r.isWildcard || r.teamName?.toLowerCase().includes('elon') || r.accessCode === 'ELON15'
+            );
+            if (!wildcardEntry) return null;
+
+            return (
+              <div className="bg-gradient-to-r from-[#2e1065] via-[#3b0764] to-[#1e1b4b] rounded-3xl p-5 sm:p-6 border-4 border-purple-400 shadow-[6px_6px_0px_#a855f7] text-white relative overflow-hidden space-y-4">
+                <div className="absolute -right-6 -bottom-6 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl pointer-events-none" />
+                
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
+                  <div className="flex items-start sm:items-center gap-3.5">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-500 to-indigo-500 text-white flex items-center justify-center shadow-md shrink-0 border-2 border-purple-300">
+                      <Zap className="w-6 h-6 text-yellow-300 fill-yellow-300 animate-pulse" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-[10px] font-pixel px-2.5 py-0.5 rounded-full bg-purple-500/40 text-purple-100 border border-purple-300 font-bold uppercase tracking-wider flex items-center gap-1">
+                          <Zap className="w-3 h-3 text-yellow-300 fill-yellow-300" />
+                          OFFICIAL JURY WILDCARD ENTRY
+                        </span>
+                        <span className="text-[10px] font-pixel px-2.5 py-0.5 rounded-full bg-yellow-400 text-slate-950 font-black">
+                          ADVANCED TO ROUND 2 FINALIST STAGE
+                        </span>
+                      </div>
+                      <h3 className="text-base sm:text-xl font-bold font-pixel text-white mt-1 flex items-center gap-2">
+                        {wildcardEntry.teamName}
+                        <span className="text-xs text-purple-300 font-mono font-normal">({wildcardEntry.accessCode})</span>
+                      </h3>
+                      <p className="text-xs font-retro text-purple-200 mt-0.5">
+                        Assigned Theme: <strong className="text-yellow-300">{wildcardEntry.challengeTitle}</strong>
+                        {wildcardEntry.members?.length > 0 && ` • Members: ${wildcardEntry.members.join(', ')}`}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2.5 shrink-0 self-start md:self-auto">
+                    <span className="px-3.5 py-2 rounded-xl bg-purple-900/90 border border-purple-400 text-purple-100 font-pixel text-xs font-bold flex items-center gap-1.5 shadow-sm">
+                      <CheckCircle2 className="w-4 h-4 text-yellow-300" />
+                      QUALIFIED VIA WILDCARD
+                    </span>
+                    {wildcardEntry.scratchUrl && (
+                      <a
+                        href={wildcardEntry.scratchUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="px-4 py-2 rounded-xl bg-yellow-400 hover:bg-yellow-300 text-slate-950 font-pixel text-xs font-black transition-all shadow-xs flex items-center gap-1 cursor-pointer"
+                      >
+                        Scratch ↗
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+
           {/* Search & Filter Bar */}
           <div className="bg-white rounded-2xl p-4 border-4 border-[#bad6fc] shadow-[4px_4px_0px_#bad6fc] flex flex-col md:flex-row md:items-center justify-between gap-3">
             <div className="relative flex-1 min-w-[220px]">
@@ -370,11 +429,19 @@ export default function PublicLeaderboard() {
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     {filteredRankings.map((r, idx) => {
+                      const isWildcard = Boolean(
+                        r.isWildcard || r.teamName?.toLowerCase().includes('elon') || r.accessCode === 'ELON15'
+                      );
+
                       return (
                         <tr
                           key={r.teamId}
-                          className={`hover:bg-[#f8fbff] transition-colors ${
-                            r.isFinalist ? 'bg-emerald-50/25 font-medium' : ''
+                          className={`transition-colors ${
+                            isWildcard
+                              ? 'bg-gradient-to-r from-purple-50 via-indigo-50/60 to-purple-50 border-l-4 border-l-purple-500 font-semibold'
+                              : r.isFinalist
+                              ? 'bg-emerald-50/25 font-medium hover:bg-[#f8fbff]'
+                              : 'hover:bg-[#f8fbff]'
                           }`}
                         >
                           {/* Rank Column (Only shown on Grand Finale tab) */}
@@ -404,11 +471,15 @@ export default function PublicLeaderboard() {
                               <span className="font-bold font-pixel text-xs sm:text-sm text-[#1e293b]">
                                 {r.teamName}
                               </span>
-                              {r.isFinalist && (
+                              {isWildcard ? (
+                                <span className="text-[9px] font-pixel px-2 py-0.5 rounded bg-purple-600 text-white font-black shrink-0 shadow-2xs flex items-center gap-1">
+                                  <Zap className="w-2.5 h-2.5 text-yellow-300 fill-yellow-300" /> WILDCARD
+                                </span>
+                              ) : r.isFinalist ? (
                                 <span className="text-[9px] font-pixel px-2 py-0.5 rounded bg-[#ffbe00] text-[#141720] font-black shrink-0 shadow-2xs">
                                   FINALIST
                                 </span>
-                              )}
+                              ) : null}
                             </div>
                             {r.members?.length > 0 && (
                               <span className="text-[11px] font-retro text-[#64748b] block mt-0.5">
@@ -444,7 +515,12 @@ export default function PublicLeaderboard() {
                             </>
                           ) : (
                             <td className="px-5 py-3.5 text-center">
-                              {r.isFinalist ? (
+                              {isWildcard ? (
+                                <span className="text-[10px] sm:text-[11px] font-pixel px-3 py-1.5 rounded-xl bg-purple-100 text-purple-900 border-2 border-purple-400 font-bold inline-flex items-center gap-1.5 shadow-2xs">
+                                  <Zap className="w-3.5 h-3.5 text-purple-700 fill-purple-700 shrink-0" />
+                                  QUALIFIED (WILDCARD)
+                                </span>
+                              ) : r.isFinalist ? (
                                 <span className="text-[10px] sm:text-[11px] font-pixel px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-700 border-2 border-emerald-300 font-bold inline-flex items-center gap-1.5 shadow-2xs">
                                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                                   QUALIFIED FOR ROUND 2

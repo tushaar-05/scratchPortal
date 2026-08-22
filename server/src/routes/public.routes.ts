@@ -108,6 +108,7 @@ router.get('/leaderboard', async (req, res: Response) => {
         category: t.challenge?.category || '',
         members: t.members.map((m) => m.fullName),
         isFinalist: t.isFinalist,
+        isWildcard: Boolean(t.name?.toLowerCase().includes('elon') || t.accessCode === 'ELON15'),
         qualificationStatus: t.isFinalist ? 'QUALIFIED' : 'NOT_QUALIFIED',
         r2PresentationSlot: t.r2PresentationSlot,
         round1Score: avgR1,
