@@ -426,6 +426,66 @@ router.post('/teams/:teamId/toggle-finalist', async (req: AuthenticatedRequest, 
   }
 });
 
+// 4c. Auto-Qualify Top Scoring Teams (1 per Challenge Theme)
+router.post('/auto-qualify-finalists', async (req: AuthenticatedRequest, res: Response) => {
+  try {
+    const challenges = await prisma.challenge.findMany({
+      include: {
+        teams: {
+          include: { round1Scores: true },
+        },
+      },
+    });
+
+    // Reset all finalists first
+    await prisma.team.updateMany({
+      data: { isFinalist: false, r2PresentationSlot: null },
+    });
+
+    const qualifiedTeams = [];
+    let slot = 1;
+
+    for (const c of challenges) {
+      if (!c.teams || c.teams.length === 0) continue;
+      // Sort teams by round1Score descending
+      const sorted = [...c.teams].sort((a, b) => (b.round1Score || 0) - (a.round1Score || 0));
+      const topTeam = sorted[0];
+
+      if (topTeam) {
+        const updated = await prisma.team.update({
+          where: { id: topTeam.id },
+          data: {
+            isFinalist: true,
+            r2PresentationSlot: slot++,
+          },
+          include: { challenge: true, members: true },
+        });
+        qualifiedTeams.push(updated);
+      }
+    }
+
+    try {
+      const io = getIO();
+      if (io) {
+        io.to('room:global').emit('leaderboard:published');
+        io.to('room:global').emit('score:updated');
+        io.to('room:global').emit('stage:changed');
+      }
+    } catch (e) {
+      console.warn('Socket broadcast warning:', e);
+    }
+
+    res.json({
+      message: `Successfully qualified ${qualifiedTeams.length} top squads for Round 2!`,
+      qualifiedCount: qualifiedTeams.length,
+      qualifiedTeams: qualifiedTeams.map((t) => ({ id: t.id, name: t.name, challenge: t.challenge?.title, score: t.round1Score })),
+    });
+  } catch (error: any) {
+    console.error('Auto-qualify error:', error);
+    res.status(500).json({ error: error.message || 'Failed to auto-qualify finalists.' });
+  }
+});
+
 // 4b. Remove / Unassign a Squad from a Problem Statement (Admin override / exception handler)
 router.post('/teams/:teamId/unassign-challenge', async (req: AuthenticatedRequest, res: Response) => {
   try {

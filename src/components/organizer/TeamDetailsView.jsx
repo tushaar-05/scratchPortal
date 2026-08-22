@@ -132,6 +132,22 @@ export default function TeamDetailsView({ defaultTabMode, onNavigateLeaderboard,
     }
   };
 
+  const handleAutoQualifyFinalists = async () => {
+    if (!window.confirm('⚡ Auto-qualify the top-scoring squad from each challenge theme for Round 2?')) return;
+    try {
+      setLoading(true);
+      const res = await api.post('/admin/auto-qualify-finalists');
+      setToastMessage({ type: 'success', text: res.message || 'Top squads auto-qualified for Round 2!' });
+      setTimeout(() => setToastMessage(null), 4000);
+      await fetchData();
+    } catch (err) {
+      setToastMessage({ type: 'error', text: err.message || 'Failed to auto-qualify finalists.' });
+      setTimeout(() => setToastMessage(null), 4000);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchData();
 
@@ -1038,6 +1054,16 @@ export default function TeamDetailsView({ defaultTabMode, onNavigateLeaderboard,
                   </button>
                 );
               })}
+
+              <button
+                type="button"
+                onClick={handleAutoQualifyFinalists}
+                className="ml-auto px-3.5 py-1.5 rounded-xl bg-[#ffbe00] hover:bg-[#ebae00] text-[#141720] font-pixel text-xs font-black flex items-center gap-1.5 shadow-[2px_2px_0px_#b87515] cursor-pointer transition-all active:translate-y-0.5"
+                title="Automatically qualify the top scoring squad from each creative theme for Round 2"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-[#141720]" />
+                <span>⚡ AUTO-QUALIFY TOP TEAMS</span>
+              </button>
             </div>
 
           </div>
